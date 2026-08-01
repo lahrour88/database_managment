@@ -57,18 +57,22 @@ class Database():
             return "User inserted successfully"
         except sqlite3.Error as e:
             return f"Error inserting user: {e}"
-    def select_user(self ,table_name ,coloms ,condition=None ,):
+    def select_user(self ,table_name ,coloms ,condition=None ,search=None):
         """ exemple coloms = 'name , email , age '"""
         try :
-            if condition :
-                query = f"WHERE {condition}"
+            if search == 'search' :
+                query = condition
             else :
-                query = None
+                if condition :
+                    query = f"WHERE {condition}"
+                else :
+                    query = None
 
             if coloms == "*" :
                 sql = f"SELECT * FROM {table_name} {query}"
             else :
                 sql = f"SELECT {coloms} FROM {table_name} {query}"
+                print(sql)
             data = self.cursor.execute(sql)
             self.connection.commit()
             return data.fetchall()
