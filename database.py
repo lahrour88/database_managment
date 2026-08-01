@@ -33,9 +33,8 @@ class database():
     def update_user(self ,query ,id):
         """ enter the query in the form of query="name = 'new_name' , email = 'new_email' , phone = 'new_phone' , password = 'new_password'" """
         try :
-            set_clause = ", ".join([f"{key} = ?" for key in args])
             self.cursor.execute(f"""
-            UPDATE users SET {set_clause} WHERE id = ?
+            UPDATE users SET {query} WHERE id = ?
             """ , (id,))
             self.connection.commit()
             return "User updated successfully"
