@@ -1,6 +1,16 @@
+# environment files
 *.env
+
+# virtual environment
 venv/
+
+# database files
 *.db
-*__pycache__/
-.gitignore
+
+# python cache dirs
+__pycache__/
+
+# docs (تصحيح الإملاء إذا لزم)
+documentation_SQL.md
+# أو إذا الاسم كما في المستودع:
 .documenation_SQL.md
