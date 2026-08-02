@@ -1,6 +1,7 @@
 import sqlite3
 from unicodedata import name
 
+from models import user
 class Database():
     """
     A class to manage SQLite database operations.
@@ -57,7 +58,7 @@ class Database():
             return "User inserted successfully"
         except sqlite3.Error as e:
             return f"Error inserting user: {e}"
-    def select_user(self ,table_name ,coloms ,condition=None ,search=None):
+    def select_user(self ,table_name, coloms = None ,condition=None ,search=None):
         """ exemple coloms = 'name , email , age '"""
         try :
             if search == 'search' :
@@ -70,14 +71,15 @@ class Database():
 
             if coloms == "*" :
                 sql = f"SELECT * FROM {table_name} {query}"
+            elif coloms == None or coloms =="" :
+                sql = f"SELECT * FROM {table_name} {query}"
             else :
                 sql = f"SELECT {coloms} FROM {table_name} {query}"
-                print(sql)
             data = self.cursor.execute(sql)
             self.connection.commit()
             return data.fetchall()
         except sqlite3.Error as e:
-            return f"Error selecting user: {e}"
+            return f"Error selecting user: {e} ;{sql}"
 
     def update_user(self ,table_name ,query, name=None , email=None , phone=None , password=None ,id=None , coloms=None):
         """ colomns updates for exemple : name = 'new_name' , email = 'new_email' , phone = 'new_phone' , password = 'new_password' """
@@ -107,7 +109,7 @@ class Database():
             else :
                 print(f"coloms : {coloms} \n")
                 sql = f"UPDATE {table_name} SET {coloms} WHERE {query}"
-                print(sql)
+                print(f"sql : {sql} \n")
                 self.cursor.execute(sql)
                 self.connection.commit()
                 return "User updated successfully"
@@ -123,9 +125,11 @@ class Database():
             return "User deleted successfully"
         except Exception as e:
             return f"Error deleting user: {e}"
+        
     def close(self):
         """ Close the database connection. """
         self.connection.close()
+
     def drop_table(self, table_name):
         """ Drop a table from the database. """
         try:
