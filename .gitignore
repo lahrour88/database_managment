@@ -14,3 +14,6 @@ __pycache__/
 documentation_SQL.md
 # أو إذا الاسم كما في المستودع:
 .documenation_SQL.md
+__pycache__/
+*.pyc
+*.db
