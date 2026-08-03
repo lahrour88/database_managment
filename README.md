@@ -83,6 +83,4 @@ Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
 Lahrour Abdeladime
 
 · 🐙 GitHub : @lahrour88
-· 📷 Instagram : @lahrour_19902 (instagram.com/lahrour_1902)
-
----
+· 📷 Instagram : [@lahrour_1902](instagram.com/lahrour_1902)
