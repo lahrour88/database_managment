@@ -35,8 +35,7 @@ python main.py
 ```
 
 2. Menu principal
-   https://github.com/lahrour88/database_managment/picter/menu.png?raw=true
-   picter/menu.png
+   ![picter/menu.png](picter/menu.png)
 
 📁 Structure du projet
 
